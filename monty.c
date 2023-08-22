@@ -1,5 +1,6 @@
-#incude "monty.h"
+#include "monty.h"
 #include <string.h>
+#include <stdio.h>
 
 /**
  * main - Where program starts
@@ -22,7 +23,7 @@ int main(int argc, char **argv)
 	}
 
 	/* open file and check for error in opening */
-	file = fopen(argv[], "r");
+	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -36,7 +37,7 @@ int main(int argc, char **argv)
 		if (strcmp(cmd, "push") == 0)
 		{
 			val = strtok(NULL, " ");
-			frpintf(stdout, "%s", val);
+			fprintf(stdout, "%s", val);
 		}
 	}
 

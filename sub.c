@@ -24,7 +24,8 @@ void f_sub(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 	aux = *head;
-	sus = aux->next->n = sus;
+	sus = aux->next->n - aux->n;
+	aux->next->n = sus;
 	*head = aux->next;
 	free(aux);
 }

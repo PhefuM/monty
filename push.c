@@ -7,7 +7,11 @@
  * Return: void
  */
 
+<<<<<<< HEAD
 void f_push(stack_t **head, unsigned int counter)
+=======
+void f_push(char *val)
+>>>>>>> b4ee83ae886629c58bea866b1641b71c1920ff6d
 {
 	int n, j = 0, flag = 0;
 

@@ -14,14 +14,14 @@ void f_mul(stack_t **head, unsigned int counter)
 	h = *head;
 	while (h)
 	{
-		h = h->bext;
+		h = h->next;
 		len++;
 	}
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
-		fclose(bus.file);
-		free(bus.content);
+		fclose(sus.file);
+		free(sus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}

@@ -30,7 +30,7 @@ void f_div(stack_t **head, unsigned int counter)
 	{
 		fprintf(stderr, "L%d: divsion by zero\n", counter);
 		fclose(bus.file);
-		free(bus.cont);
+		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}

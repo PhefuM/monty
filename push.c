@@ -1,10 +1,11 @@
 #include "monty.h"
 
-void push(char val)
+void push(char *val)
 {
-	int num = atoi(val);
-	char sta[1000];
+	int num, i;
+	char sta[100];
 
+	num = atoi(val);
 	sta[0] = num;
 
 	printf("%d\n", num);

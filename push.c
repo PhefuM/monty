@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void push(char *val)
+void f_push(char *val)
 {
 	int num, i;
 	char sta[100];

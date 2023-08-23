@@ -6,7 +6,7 @@
  * @counter: line counter
  * Return: void
  */
-void _pall(stack_t **head, unsigned int counter)
+void f_pall(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	(void) counter;

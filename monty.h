@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -34,8 +35,19 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void push(char *val);
+int execute(char *content, stack_t **stack, unsigned int counter, FILE *file);
+void f_push(char *val);
+void free_stack(stack_t *head);
 void f_mul(stack_t **head, unsigned int counter);
 void f_add(stack_t **head, unsigned int counter);
 void f_sub(stack_t **head, unsigned int counter);
+void f_mod(stack_t ** head, unsigned int counter);
+void f_pchar(stack_t **head, unsigned int counter);
+void f_pstr(stack_t **head, unsigned int counter);
+void f_rotl(stack_t **head, __attribute__((unused)) unsigned int counter);
+void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
+void f_stack(stack_t **head, unsigned int counter);
+void f_queue(stack_t **head, unsigned int counter);
+void addqueue(stack_t **head, int n);
+
 #endif

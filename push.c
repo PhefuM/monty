@@ -1,25 +1,33 @@
 #include "monty.h"
 
 /**
- * push - push elements to stack
- * @val: element to be added to stack
+ * f_push - push elements to stack
+ * @head: element to be added to stack
+ * @counter: line_number
  * Return: void
  */
 
-void push(char *val)
+void f_push(stack_t **head, unsigned int counter)
 {
-	int num, i;
-	char sta[100];
+	int n, j = 0, flag = 0;
 
-	num = atoi(val);
-	sta[0] = num;
-
-	printf("%d\n", num);
-	i = 0;
-	while (sta[i])
+	if (bus.arg)
 	{
-		printf("%c", sta[i]);
-		i++;
-	}
-	printf("\n");
+		if (bus.arg[0] == '-')
+			j++;
+		for (; bus.arg[j] != '\0'; j++)
+		{
+			if (bus.arg[j] > 57 || bus.arg[j] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE); }
+		n = atoi(bus.arg);
+		if (bus.lifi == 0)
+			addnode(head, n);
+		else
+			addqueue(head, n);
 }

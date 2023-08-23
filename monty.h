@@ -74,5 +74,7 @@ void f_swap(stack_t **head, unsigned int counter);
 void f_nop(stack_t **head, unsigned int counter);
 void f_push(stack_t **head, unsigned int number);
 void addnode(stack_t **head, int n);
+void f_pall(stack_t **head, unsigned int counter);
+void f_div(stack_t **head, unsigned int counter);
 
 #endif

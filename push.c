@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * push - push elements to stack
+ * @val: element to be added to stack
+ * Return: void
+ */
+
 void push(char *val)
 {
 	int num, i;

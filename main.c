@@ -1,4 +1,11 @@
 #include "monty.h"
+<<<<<<< HEAD
+=======
+#include <stdio.h>
+#include <stdlib.h>
+
+bus_t bus = {NULL, NULL, NULL, 0};
+>>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 /**
  * free_all - frees dynamic allocated memory
@@ -28,8 +35,17 @@ void free_all(stack_t **stack, char *opcode, char *arg)
  */
 void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 {
+<<<<<<< HEAD
 	int num = atoi(arg);
 	stack_t *new, *last = *stack;
+=======
+	char *content;
+	FILE *file;
+	size_t size = 0;
+	ssize_t read_line = 1;
+	stack_t *stack = NULL;
+	unsigned int count = 0;
+>>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 	if (arg == NULL)
 	{
@@ -56,6 +72,7 @@ void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 		last->prev = new;
 		new->next = last;
 	}
+<<<<<<< HEAD
 	else
 	{
 		new->prev = *stack;
@@ -78,6 +95,20 @@ void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 void other_op(stack_t **stk, char *op_c, instruction_t **oparr, ssize_t l_n)
 {
 	int num, found = 0;
+=======
+	while (read_line > 0)
+	{
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		count++;
+		if (read_line > 0)
+			execute(content, &stack, count, file);
+		free(content);
+	}
+	free_stack(stack);
+	fclose(file);
+>>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 	for (num = 0; oparr[num] != NULL; num++)
 	{

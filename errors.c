@@ -20,11 +20,11 @@ void print_usage_err(void)
 }
 
 /**
- * print_mal_err - prints error from faled malloc
+ * print_mal_err - prints error from failed malloc
  */
 void print_mal_err(void)
 {
-	printf(stderr, "Erorr: malloc failed\n");
+	fprintf(stderr, "Erorr: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -37,14 +37,14 @@ void print_mal_err(void)
  */
 void check_arg(stack_t **stack, unsigned int line_number, char *op, char *arg)
 {
-	unsigend int x, ln = line_number;
+	unsigned int x, ln = line_number;
 
 	for (x = 0; arg[x] != '\0'; x++)
 	{
 		if ((arg[x] < 48 || arg[x] > 57) && arg[x] != '-')
 		{
 			free_all(stack, op, arg);
-			frpintf(stderr, "L%u: usage: push integer\n", ln);
+			fprintf(stderr, "L%u: usage: push integer\n", ln);
 		}
 	}
 }

@@ -16,7 +16,7 @@ void add_inst(instruction_t **d, char *oc, void (*f)(stack_t **, unsigned int))
 	if (opcode == NULL)
 		print_mal_err();
 	strcpy(opcode, oc);
-	new = mallc(sizeof(instruction_t));
+	new = malloc(sizeof(instruction_t));
 	*d = new;
 	(*d)->opcode = opcode;
 	(*d)->f = func;
@@ -31,7 +31,7 @@ void free_inst(void)
 
 	for (x = 0; oplist[x] != NULL; x++)
 	{
-		free((oplist[x]->opcode);
+		free(oplist[x]->opcode);
 		free(oplist[x]);
 	}
 	free(oplist);

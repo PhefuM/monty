@@ -1,11 +1,7 @@
 #include "monty.h"
-<<<<<<< HEAD
-=======
+
 #include <stdio.h>
 #include <stdlib.h>
-
-bus_t bus = {NULL, NULL, NULL, 0};
->>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 /**
  * free_all - frees dynamic allocated memory
@@ -35,22 +31,13 @@ void free_all(stack_t **stack, char *opcode, char *arg)
  */
 void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 {
-<<<<<<< HEAD
 	int num = atoi(arg);
 	stack_t *new, *last = *stack;
-=======
-	char *content;
-	FILE *file;
-	size_t size = 0;
-	ssize_t read_line = 1;
-	stack_t *stack = NULL;
-	unsigned int count = 0;
->>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 	if (arg == NULL)
 	{
-		free_a;; (stack, opcode, arg);
-		frprintf(stderr, "L%lu: usage: push integer\n", ln)'
+		free_all(stack, opcode, arg);
+		fprintf(stderr, "L%lu: usage: push integer\n", ln);
 		exit(EXIT_FAILURE);
 	}
 	check_arg(stack, ln, opcode, arg);
@@ -72,7 +59,6 @@ void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 		last->prev = new;
 		new->next = last;
 	}
-<<<<<<< HEAD
 	else
 	{
 		new->prev = *stack;
@@ -95,24 +81,10 @@ void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
 void other_op(stack_t **stk, char *op_c, instruction_t **oparr, ssize_t l_n)
 {
 	int num, found = 0;
-=======
-	while (read_line > 0)
-	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
-		bus.content = content;
-		count++;
-		if (read_line > 0)
-			execute(content, &stack, count, file);
-		free(content);
-	}
-	free_stack(stack);
-	fclose(file);
->>>>>>> 3696d6d523b9c29abbeb75002210d504693af912
 
 	for (num = 0; oparr[num] != NULL; num++)
 	{
-		if (strcmo(op_c, (oparr[num])->opcode) == )
+		if (strcmp(op_c, (oparr[num])->opcode) == 0)
 		{
 			if (oparr[num]->f != NULL)
 				oparr[num]->f(stk, l_n);
@@ -122,7 +94,7 @@ void other_op(stack_t **stk, char *op_c, instruction_t **oparr, ssize_t l_n)
 	}
 	if (found == 0)
 	{
-		fprintf(stferr, L%lu: unknown instruction %s\n", l_n," op_c);
+		fprintf(stderr, "L%lu: unknown instruction %s\n", l_n, op_c);
 		free_all(stk, op_c, NULL);
 		exit(EXIT_FAILURE);
 	}
@@ -139,12 +111,12 @@ ssize_t change_mode(char *opcode)
 {
 	ssize_t mode;
 
-	if (strcmp(opcode, "stack") == 0
+	if (strcmp(opcode, "stack") == 0)
 		mode = 0;
 	else
 		mode = 1;
 	free(opcode);
-	return(mode);
+	return (mode);
 }
 
 /**
@@ -159,12 +131,12 @@ int main(int argc, char **argv)
 	FILE *script;
 	ssize_t line_number = 1, check, mode = 0;
 	stack_t *stack = NULL;
-	char *buf *op = NULL, *arg = NULL;
+	char *buf, *op = NULL, *arg = NULL;
 
 	if (argc != 2)
 		print_usage_err();
 	script = fopen(argv[1], "r");
-	if (scropt == NULL)
+	if (script == NULL)
 		print_file_err(argv[1]);
 	create_oplist();
 	buf = malloc(256 * sizeof(char));
@@ -175,12 +147,12 @@ int main(int argc, char **argv)
 		check = tokenize(buf, &op, &arg);
 		if (check == 1)
 			continue;
-		else if (check = -1)
+		else if (check == -1)
 		{
 			free_all(&stack, NULL, NULL);
 			print_mal_err();
 		}
-		if ((strcmo(op, "stack") == 0 || (strcmp(op, "queue") == 0))
+		if (strcmp(op, "stack") == 0 || strcmp(op, "queue") == 0)
 				mode = change_mode(op);
 		else if (strcmp(op, "push") == 0)
 			push_op(&stack, arg, line_number, op, mode);

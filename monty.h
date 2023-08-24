@@ -38,43 +38,31 @@ typedef struct instruction_s
         void(*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct bus_s - variables -args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @lifi: flag to change from stack to queue
- * Description: carries values through program
- */
-
-typedef struct bus_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-} bus_t;
-extern bus_t bus;
-
-int execute(char *content, stack_t **stack, unsigned int counter, FILE *file);
-void free_stack(stack_t *head);
-void f_mul(stack_t **head, unsigned int counter);
-void f_add(stack_t **head, unsigned int counter);
-void f_sub(stack_t **head, unsigned int counter);
-void f_mod(stack_t ** head, unsigned int counter);
-void f_pchar(stack_t **head, unsigned int counter);
-void f_pstr(stack_t **head, unsigned int counter);
-void f_rotl(stack_t **head, __attribute__((unused)) unsigned int counter);
-void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
-void f_stack(stack_t **head, unsigned int counter);
-void f_queue(stack_t **head, unsigned int counter);
-void addqueue(stack_t **head, int n);
-void f_pop(stack_t **head, unsigned int counter);
-void f_swap(stack_t **head, unsigned int counter);
-void f_nop(stack_t **head, unsigned int counter);
-void f_push(stack_t **head, unsigned int number);
-void addnode(stack_t **head, int n);
-void f_pall(stack_t **head, unsigned int counter);
-void f_div(stack_t **head, unsigned int counter);
+extern instruction_t **oplist;
+extern instruction_t **oplist;
+instruction_t **oplist;
+void create_oplist(void);
+void print_stack(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *rear);
+void free_all(stack_t **stack, char *opcode, char *arg);
+void pop_stack(stack_t **stack, unsigned int line_number);
+int tokenize(char *buf, char **opcode, char **arg);
+void add_inst(instruction_t **d, char *oc, void (*f)(stack_t**, unsigned int));
+void free_inst(void);
+void print_file_err(char *file);
+void print_usage_err(void);
+void print_mal_err(void);
+void pint_stack(stack_t **stack, unsigned int line_number);
+void swap_stack(stack_t **stack, unsigned int line_number);
+void add_stack(stack_t **stack, unsigned int line_number);
+void sub_stack(stack_t **stack, unsigned int line_number);
+void mul_stack(stack_t **stack, unsigned int line_number);
+void div_stack(stack_t **stack, unsigned int line_number);
+void mod_stack(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void check_arg(stack_t **stack, unsigned int line_number, char *op, char *arg);
 
 #endif

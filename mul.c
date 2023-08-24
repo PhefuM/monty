@@ -9,7 +9,7 @@ void f_mul(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	int len = 0;
-
+	int product;
 
 	h = *head;
 	while (h)
@@ -25,7 +25,8 @@ void f_mul(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = (*head)->next->n * (*head)->n;
-	*head = h->next;
-	free(h);
+	product = (*head)->next->n * (*head)->n;
+	*head = (*head)->next;
+	free(*head);
+	(*head)->n = product;
 }

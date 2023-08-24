@@ -10,12 +10,12 @@
 void div_stack(stack_t **stack, unsigned int line_number)
 {
 	unsigned int num = line_number;
-	int interger;
+	int integer;
 	stack_t *prev, *temp = *stack;
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		free_all(stack, NULLm NULL);
+		free_all(stack, NULL, NULL);
 		fprintf(stderr, "L%u: can't div, stack too short\n", num);
 		exit(EXIT_FAILURE);
 	}
@@ -26,7 +26,7 @@ void div_stack(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	prev = (*stack)->prev;
-	interger = prev->n / (*stack)->n;
+	integer = prev->n / (*stack)->n;
 	prev->n = integer;
 	prev->next = NULL;
 	*stack = prev;
@@ -60,7 +60,7 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 	}
 	prev = (*stack)->prev;
 	integer = prev->n % (*stack)->n;
-	prev->n integer;
+	prev->n = integer;
 	prev->next = NULL;
 	*stack = prev;
 	free(temp);
@@ -109,7 +109,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 		if (temp->n < 1 || temp->n > 127)
 			break;
 		putchar(temp->n);
-		tempt = temp->prev;
+		temp = temp->prev;
 	}
 	putchar('\n');
 }

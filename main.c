@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
 	char *content;
 	FILE *file;
 	size_t size = 0;
-	ssize_t read_line = 1;
 	stack_t *stack = NULL;
 	unsigned int count = 0;
 
+	content = malloc(size);
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -32,14 +32,12 @@ int main(int argc, char *argv[])
 				argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (read_line > 0)
+	while (fgets(content, size, file) != NULL)
 	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
 		count++;
-		if (read_line > 0)
-			execute(content, &stack, count, file);
+		execute(content, &stack, count, file);
 	}
+	free(content);
 	free_stack(stack);
 	fclose(file);
 

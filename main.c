@@ -73,7 +73,7 @@ void push_op(stack_t **stack, char *arg, ssize_t ln, char *opcode, ssize_t mod)
  * other_op - performs various  other op instructions
  * @stk: top of stack
  * @op_c: operation code
- * @oppar: array containing opcodes and associated functions
+ * @oparr: array containing opcodes and associated functions
  * @l_n: line number read frm script
  *
  * Return: nothing
@@ -153,7 +153,7 @@ int main(int argc, char **argv)
 			print_mal_err();
 		}
 		if (strcmp(op, "stack") == 0 || strcmp(op, "queue") == 0)
-				mode = change_mode(op);
+			mode = change_mode(op);
 		else if (strcmp(op, "push") == 0)
 			push_op(&stack, arg, line_number, op, mode);
 		else
